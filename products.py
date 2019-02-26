@@ -8,7 +8,8 @@ while True:
 	name = input('請輸入商品名稱')
 	if name == 'q':
 		break
-	price = input('請輸入商品價格')	
+	price = input('請輸入商品價格')
+	price = int(price)	
 	#p = [] #小火車
 	#p.append(name)
 	#p.append(price)
@@ -29,3 +30,13 @@ print(products)
 
 for p in products: #Ｐ是小清單！把小清單從大清單一個個拿出來
 	print(p[0],'的價格是',p[1])#印出小火車的第零格＝name，和價格
+
+ #---創建檔案！
+
+with open('products.csv', 'w', encoding= 'utf-8') as f: #w是寫入，創造檔案,存成csv就是存成excel
+	f.write('商品名稱,價格\n') #在數字上面寫上一層簡介，注意空格跳行符號
+	for p in products:
+			f.write(p[0] + ',' + str(p[1])+ '\n')  #逗點可以幫助excel分隔，把名稱和價格分開
+			#任何程式有open就有close,python是用with open 來自動close
+			#str(p[1]) 字串只能與字串家
+
